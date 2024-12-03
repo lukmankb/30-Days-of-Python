@@ -63,4 +63,10 @@ user_lname = input('Enter Last Name: ')
 user_country = input('Enter Country: ')
 user_age = input("Input Age: ")
 
+#output 
+print(f'First Name: {user_fname}')
+print(f'Last Name: {user_lname}')
+print(f'user_country: {user_country}')
+print(f'user_age: {user_age}')
 #Run help('keywords') in Python shell or in your file to check for the Python reserved words or keywords
+help('keywords')
