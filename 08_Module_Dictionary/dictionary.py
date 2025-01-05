@@ -29,7 +29,7 @@ skills = student['skills']
 print(skills)
 print(type(skills))
 #Modify the skills values by adding one or two skills
-student['skills'].append('HTML')
+student['skills'].append('HTML') #Adds HTML to the list of skills
 student['skills'].append('CSS')
 print(student['skills'])
 #Get the dictionary keys as a list
