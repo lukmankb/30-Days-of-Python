@@ -2931,6 +2931,30 @@ countries_data = [
     }
 ]
 #Sort countries by name, by capital, by population
+for country in countries_data:
+    print('By Name:',country['name'])
+    print('By Capital: ',country['capital'])
+    print('By Population: ',country['population'])
 #Sort out the ten most spoken languages by location.
-
+def most_spoken_languages(countries_data):
+    language_dict = {}
+    for country in countries_data:
+        for language in country["languages"]:
+            if language in language_dict:
+                language_dict[language] += 1
+            else:
+                language_dict[language] = 1
+    sorted_languages = sorted(language_dict.items(), key=lambda x: x[1]
+                              , reverse=True)
+    return sorted_languages[:10]
+top_20_languages = most_spoken_languages(countries_data)
+for language, count in top_20_languages:
+    print(f"{language}: {count}")
 #Sort out the ten most populated countries.
+def most_populated_countries(countries_data):
+    sorted_countries = sorted(countries_data, key=lambda x: x["population"]
+                              , reverse=True)
+    return sorted_countries[:10]
+top_10_populated_countries = most_populated_countries(countries_data)
+for country in top_10_populated_countries:
+    print(f"{country['name']}: {country['population']}")
