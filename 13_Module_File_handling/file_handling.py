@@ -129,7 +129,26 @@ for word in find_most_common_words('./30-days-of-python/datas/donald_speech.txt'
     print(word)
 
 #Use the function, find_most_frequent_words to find: a) The ten most frequent words used in Obama's speech b) The ten most frequent words used in Michelle's speech c) The ten most frequent words used in Trump's speech d) The ten most frequent words used in Melina's speech
-
-#Write a python application that checks similarity between two texts. It takes a file or a string as a parameter and it will evaluate the similarity of the two texts. For instance check the similarity between the transcripts of Michelle's and Melina's speech. You may need a couple of functions, function to clean the text(clean_text), function to remove support words(remove_support_words) and finally to check the similarity(check_text_similarity). List of stop words are in the data directory
+def find_most_frequent_words(filename, number):
+    import re
+    from collections import Counter
+    with open (filename, 'r') as f:
+        content = f.read().lower()
+        words = re.findall(r'\b\w+\b', content)
+        stop_words = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I']
+        words = [word for word in words if word not in stop_words]
+        words_count = Counter(words)
+        return words_count.most_common(number)
 #Find the 10 most repeated words in the romeo_and_juliet.txt
-#Read the hacker news csv file and find out: a) Count the number of lines containing python or Python b) Count the number lines containing JavaScript, javascript or Javascript c) Count the number lines containing Java and not JavaScript
+def find_most_repeated_words(filename, number):
+    import re
+    from collections import Counter
+    with open (filename, 'r') as f:
+        content = f.read().lower()
+        words = re.findall(r'\b\w+\b', content)
+        stop_words = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I']
+        words = [word for word in words if word not in stop_words]
+        words_count = Counter(words)
+        return words_count.most_common(number)
+for word in find_most_repeated_words('./30-days-of-python/datas/romeo_and_juliet.txt', 10):
+    print(word)
